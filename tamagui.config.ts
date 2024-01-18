@@ -3,7 +3,16 @@ import { createInterFont } from '@tamagui/font-inter';
 import { createMedia } from '@tamagui/react-native-media-driver';
 import { shorthands } from '@tamagui/shorthands';
 import { themes, tokens } from '@tamagui/themes';
-import { createTamagui, styled, SizableText, H1, YStack } from 'tamagui';
+import {
+  createTamagui,
+  styled,
+  SizableText,
+  H1,
+  YStack,
+  createFont,
+  XStack,
+  GetProps,
+} from 'tamagui';
 
 const animations = createAnimations({
   bouncy: {
@@ -26,8 +35,51 @@ const animations = createAnimations({
 });
 
 const headingFont = createInterFont();
-
+const Architects = createFont({
+  family: 'Architects',
+  size: {
+    1: 96,
+    2: 60,
+    3: 48,
+    4: 34,
+    5: 24,
+    6: 20,
+    7: 16,
+    8: 14,
+    9: 12,
+  },
+});
 const bodyFont = createInterFont();
+
+export const TamagButton = styled(XStack, {
+  f: 1,
+  br: 8,
+  p: 12,
+  bg: '#F8ECFE',
+  ai: 'center',
+  jc: 'center',
+
+  variants: {
+    type: {
+      outline: {
+        borderWidth: 2,
+        bg: '#1B1B1B',
+        borderColor: '#F8ECFE',
+      },
+    },
+  } as const,
+
+  pressStyle: {
+    shadowRadius: 8,
+    shadowColor: '#F8ECFE',
+    shadowOpacity: 100,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+  },
+});
+export type TamagButtonProps = GetProps<typeof TamagButton>;
 
 export const Container = styled(YStack, {
   flex: 1,
@@ -91,6 +143,7 @@ const config = createTamagui({
   fonts: {
     body: bodyFont,
     heading: headingFont,
+    architects: Architects,
   },
   themes,
   tokens,

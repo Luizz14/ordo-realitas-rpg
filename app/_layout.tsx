@@ -9,6 +9,7 @@ export default function Layout() {
   const [loaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+    Architects: require('../assets/fonts/ArchitectsDaughter-Regular.ttf'),
   });
 
   useEffect(() => {
@@ -21,7 +22,23 @@ export default function Layout() {
 
   return (
     <TamaguiProvider config={config}>
-      <Stack />
+      <Stack
+        screenOptions={{
+          headerBlurEffect: 'systemUltraThinMaterialLight',
+          title: 'Personagem',
+          headerTitleStyle: {
+            color: '#fff',
+          },
+          autoHideHomeIndicator: true,
+          headerStyle: {
+            backgroundColor: '#1A1A1A',
+          },
+          contentStyle: {
+            backdropFilter: 'blur(10px)',
+            backgroundColor: '#1F1F1F',
+          },
+        }}
+      />
     </TamaguiProvider>
   );
 }
